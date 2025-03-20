@@ -15,7 +15,7 @@ class Login:
         self.name = name
         self.surname = surname
         self.login = login
-
+  
 
     def info(self):
         return f'Name: {self.name}, Surname: {self.surname}, Login: {self.login}'
@@ -35,8 +35,10 @@ class Authorization(Login):
 
 
     def info(self):
-        self.is_hashed==True
-        return f'{super().info()}, Password: {"hashed" if self.is_hashed else self.password}'
+        self.is_hashed == True
+        if not self.is_hashed:
+            self.hashing_pass()
+        return f'{super().info()}, Password: {self.password}'
 
 
     def hashing_pass(self):
