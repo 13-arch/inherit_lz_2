@@ -19,6 +19,7 @@ class Login:
 
     def info(self):
         return f'Name: {self.name}, Surname: {self.surname}, Login: {self.login}'
+
     
 
     def is_employee(self):
@@ -34,11 +35,12 @@ class Authorization(Login):
 
 
     def info(self):
+        self.is_hashed==True
         return f'{super().info()}, Password: {"hashed" if self.is_hashed else self.password}'
 
 
     def hashing_pass(self):
         if not self.is_hashed:
             self.password = hashlib.sha256(self.password.encode()).hexdigest()
-            self.is_hashed = False
+            self.is_hashed = True
         
